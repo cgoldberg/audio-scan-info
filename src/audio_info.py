@@ -33,7 +33,7 @@ def get_metadata(filepath):
                 info["bitrate"] = f"{int(audio.info.bitrate / 1000)} kbps"
                 info["sample rate"] = f"{(audio.info.sample_rate / 1000.0):.1f} kHz"
                 info["bitrate mode"] = str(audio.info.bitrate_mode).split(".")[-1]
-                info["channels"] = audio.info.channels
+                info["channels"] = str(audio.info.channels)
                 if audio.info.track_gain:
                     info["track gain"] = f"{audio.info.track_gain:.1f} db"
                 if audio.info.track_peak:
@@ -55,7 +55,7 @@ def get_metadata(filepath):
                 info["bitrate"] = f"{int(audio.info.bitrate / 1000)} kbps"
                 info["bits per sample"] = str(audio.info.bits_per_sample)
                 info["sample rate"] = f"{(audio.info.sample_rate / 1000.0):.1f} kHz"
-                info["channels"] = audio.info.channels
+                info["channels"] = str(audio.info.channels)
                 if audio.pictures:
                     info["has embedded pictures"] = "true"
                 if audio.cuesheet:
