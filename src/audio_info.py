@@ -118,7 +118,7 @@ def light_blue_arrowhead():
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("filename", nargs="*", help="file to process (multiple allowed)")
+    parser.add_argument("filename", nargs="*", help="[optional] file to process (multiple allowed)")
     parser.add_argument("-d", "--dir", default=Path.cwd().resolve(), help="start directory")
     args = parser.parse_args()
     path = Path(args.dir)
