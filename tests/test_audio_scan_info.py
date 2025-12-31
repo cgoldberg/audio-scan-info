@@ -4,7 +4,7 @@ from pathlib import Path
 
 import mutagen
 
-import audio_info
+import audio_scan_info
 
 SAMPLES_PATH = Path("tests", "sample_files").resolve()
 LOG_LEVEL = logging.INFO
@@ -36,7 +36,7 @@ def test_get_metadata_mp3(tmp_path):
     filename = "test_file.mp3"
     copy_file(filename, tmp_path)
     filepath = tmp_path / filename
-    tags, info = audio_info.get_metadata(filepath)
+    tags, info = audio_scan_info.get_metadata(filepath)
     assert len(tags) == 2
     assert tags["artist"] == EXPECTED_ARTIST
     assert tags["title"] == EXPECTED_TITLE
@@ -52,7 +52,7 @@ def test_get_metadata_flac(tmp_path):
     filename = "test_file.flac"
     copy_file(filename, tmp_path)
     filepath = tmp_path / filename
-    tags, info = audio_info.get_metadata(filepath)
+    tags, info = audio_scan_info.get_metadata(filepath)
     assert len(tags) == 2
     assert tags["artist"] == EXPECTED_ARTIST
     assert tags["title"] == EXPECTED_TITLE
@@ -69,7 +69,7 @@ def test_analyze_mp3(tmp_path, caplog):
     copy_file(filename, tmp_path)
     filepath = tmp_path / filename
     caplog.set_level(LOG_LEVEL)
-    audio_info.analyze_file(filepath)
+    audio_scan_info.analyze_file(filepath)
     for record in caplog.records:
         assert record.levelname == "INFO"
     assert f"\u27a4  File: {filepath}\n" in caplog.text
@@ -89,7 +89,7 @@ def test_analyze_flac(tmp_path, caplog):
     copy_file(filename, tmp_path)
     filepath = tmp_path / filename
     caplog.set_level(LOG_LEVEL)
-    audio_info.analyze_file(filepath)
+    audio_scan_info.analyze_file(filepath)
     for record in caplog.records:
         assert record.levelname == "INFO"
     assert f"\u27a4  File: {filepath}\n" in caplog.text
@@ -107,7 +107,7 @@ def test_analyze_flac(tmp_path, caplog):
 def test_analyze_unknown_file(caplog):
     filename = Path("unknown_file.mp3")
     caplog.set_level(LOG_LEVEL)
-    audio_info.analyze_file(filename)
+    audio_scan_info.analyze_file(filename)
     for record in caplog.records:
         assert record.levelname == "ERROR"
     assert f"\u27a4  File: {filename}\n"
@@ -120,7 +120,7 @@ def test_run_filenames(tmp_path, caplog):
     for filename in filenames:
         copy_file(filename, tmp_path)
     caplog.set_level(LOG_LEVEL)
-    audio_info.run(tmp_path, filenames)
+    audio_scan_info.run(tmp_path, filenames)
     for record in caplog.records:
         assert record.levelname == "INFO"
     for filepath in (tmp_path / filename for filename in filenames):
@@ -148,7 +148,7 @@ def test_run_dir(tmp_path, caplog):
     for filename in filenames:
         copy_file(filename, tmp_path)
     caplog.set_level(LOG_LEVEL)
-    audio_info.run(tmp_path, [])
+    audio_scan_info.run(tmp_path, [])
     for record in caplog.records:
         assert record.levelname in ("ERROR", "INFO")
     temp_files = [tmp_path / filename for filename in filenames]

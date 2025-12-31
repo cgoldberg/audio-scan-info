@@ -1,21 +1,21 @@
-# audio-info
+# audio-scan-info
 
 ### Show metadata, tags, and stream information for audio files (MP3, FLAC)
 
 ---
 
-[![Supported Python Versions](https://img.shields.io/pypi/pyversions/audio-info)](https://pypi.org/project/audio-info)
+[![Supported Python Versions](https://img.shields.io/pypi/pyversions/audio-scan-info)](https://pypi.org/project/audio-scan-info)
 
 - Copyright (c) 2025 [Corey Goldberg][github-home]
 - Development: [GitHub][github-repo]
-- Download/Install: [PyPI][pypi-audio-info]
+- Download/Install: [PyPI][pypi-audio-scan-info]
 - License: [MIT][mit-license]
 
 ----
 
 ## About:
 
-`audio_info` is a Python CLI program that shows metadata, tags, and stream
+`audio_scan_info` is a Python CLI program that shows metadata, tags, and stream
 information from MP3 and FLAC audio files. It can be used on individual files
 or a library of files.
 
@@ -46,10 +46,10 @@ FLAC information:
 
 ## Installation:
 
-Install from [PyPI][pypi-audio-info]:
+Install from [PyPI][pypi-audio-scan-info]:
 
 ```
-pip install audio-info
+pip install audio-scan-info
 ```
 
 ## CLI Options:
@@ -59,7 +59,7 @@ pip install audio-info
 - A different directory can be specified using the `--dir` option
 
 ```
-usage: audio_info [-h] [-d DIR] [filename ...]
+usage: audio_scan_info [-h] [-d DIR] [filename ...]
 
 positional arguments:
   filename       [optional] file to process (multiple allowed)
@@ -74,28 +74,28 @@ options:
 #### Install from PyPI with pipx:
 
 ```
-pipx install audio-info
+pipx install audio-scan-info
 ```
 
 #### Show information from a single file:
 
 ```
-audio_info "Some Artist - Some Title.mp3"
+audio_scan_info "Some Artist - Some Title.mp3"
 ```
 
 #### Show information from all files in current directory (recurse subdirectories):
 
 ```
-audio_info
+audio_scan_info
 ```
 
 #### Show information from all files in a directory (recurse subdirectories):
 
 ```
-audio_info --clean --dir=/path/to/files
+audio_scan_info --dir=/path/to/files
 ```
 
 [github-home]: https://github.com/cgoldberg
-[github-repo]: https://github.com/cgoldberg/audio-info
-[pypi-audio-info]: https://pypi.org/project/audio-info
-[mit-license]: https://raw.githubusercontent.com/cgoldberg/audio-info/refs/heads/main/LICENSE
+[github-repo]: https://github.com/cgoldberg/audio-scan-info
+[pypi-audio-scan-info]: https://pypi.org/project/audio-scan-info
+[mit-license]: https://raw.githubusercontent.com/cgoldberg/audio-scan-info/refs/heads/main/LICENSE

@@ -3,8 +3,8 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "audio-info"
-version = "0.1.0"
+name = "audio-scan-info"
+version = "0.1.1"
 description = "Show metadata, tags, and stream information for audio files (MP3, FLAC)"
 license = "MIT"
 license-files = ["LICENSE"]
@@ -28,12 +28,12 @@ dependencies = [
 ]
 
 [project.scripts]
-audio_info = "audio_info:main"
+audio_scan_info = "audio_scan_info:main"
 
 [project.urls]
-homepage = "https://github.com/cgoldberg/audio-info"
-source = "https://github.com/cgoldberg/audio-info"
-download = "https://pypi.org/project/audio-info"
+homepage = "https://github.com/cgoldberg/audio-scan-info"
+source = "https://github.com/cgoldberg/audio-scan-info"
+download = "https://pypi.org/project/audio-scan-info"
 
 [dependency-groups]
 dev = [
