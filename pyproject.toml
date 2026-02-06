@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "audio-scan-info"
-version = "0.1.2"
+version = "0.1.3dev0"
 description = "Show metadata, tags, and stream information for audio files (MP3, FLAC)"
 license = "MIT"
 license-files = ["LICENSE"]

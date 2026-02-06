@@ -6,7 +6,7 @@
 
 [![Supported Python Versions](https://img.shields.io/pypi/pyversions/audio-scan-info)](https://pypi.org/project/audio-scan-info)
 
-- Copyright (c) 2025 [Corey Goldberg][github-home]
+- Copyright (c) 2025-2026 [Corey Goldberg][github-home]
 - Development: [GitHub][github-repo]
 - Download/Install: [PyPI][pypi-audio-scan-info]
 - License: [MIT][mit-license]

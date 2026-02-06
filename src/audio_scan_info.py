@@ -1,4 +1,4 @@
-# Copyright (c) 2025 Corey Goldberg
+# Copyright (c) 2025-2026 Corey Goldberg
 # MIT License
 
 import argparse
