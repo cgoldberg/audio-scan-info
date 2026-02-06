@@ -143,7 +143,7 @@ def test_run_filenames(tmp_path, caplog):
 
 
 def test_run_dir(tmp_path, caplog):
-    filenames = [path.relative_to(SAMPLES_PATH) for path in SAMPLES_PATH.rglob("**/*") if path.is_file()]
+    filenames = [path.relative_to(SAMPLES_PATH) for path in SAMPLES_PATH.rglob("*") if path.is_file()]
     num_files = len(filenames)
     for filename in filenames:
         copy_file(filename, tmp_path)

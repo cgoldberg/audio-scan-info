@@ -62,7 +62,9 @@ def get_metadata(filepath):
                     info["has cuesheet"] = "true"
                 if audio.seektable:
                     info["has seek table"] = "true"
-                if audio.tags is not None:
+                if audio.tags is None:
+                    tags = {}
+                else:
                     tags = {tag: value for tag, value in audio.tags}
     except Exception as e:
         logger.error(f"{file_label}\n   {red_x()} Error:\n     {e}\n")
