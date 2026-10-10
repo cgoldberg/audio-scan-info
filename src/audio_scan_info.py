@@ -1,5 +1,6 @@
 # Copyright (c) 2025-2026 Corey Goldberg
-# MIT License
+# SPDX-License-Identifier: MIT
+
 
 import argparse
 import logging
@@ -62,10 +63,7 @@ def get_metadata(filepath):
                     info["has cuesheet"] = "true"
                 if audio.seektable:
                     info["has seek table"] = "true"
-                if audio.tags is None:
-                    tags = {}
-                else:
-                    tags = {tag: value for tag, value in audio.tags}
+                tags = {} if audio.tags is None else {tag: value for tag, value in audio.tags}
     except Exception as e:
         logger.error(f"{file_label}\n   {red_x()} Error:\n     {e}\n")
     return tags, info
@@ -95,7 +93,7 @@ def run(path, filenames):
             filepath = Path(path / f).resolve()
             analyze_file(filepath)
     else:
-        for root, dirs, files in path.walk():
+        for root, _, files in path.walk():
             for f in sorted(files):
                 filepath = Path(root / f).resolve()
                 analyze_file(filepath)

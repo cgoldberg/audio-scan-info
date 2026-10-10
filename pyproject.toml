@@ -22,9 +22,10 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
     "Programming Language :: Python :: 3.14",
+    "Programming Language :: Python :: 3.15",
 ]
 dependencies = [
-    "mutagen==1.47.0",
+    "mutagen==1.48.1",
 ]
 
 [project.scripts]
@@ -40,30 +41,22 @@ dev = [
     "tox",
 ]
 lint = [
-    "black",
-    "refurb",
     "ruff",
 ]
 test = [
     "pytest",
 ]
 validate = [
-    "packaging",
-    "validate-pyproject",
+    "validate-pyproject[all]",
 ]
 
 [tool.setuptools]
 package-dir = {"" = "src"}
 
 [tool.pytest]
-addopts = ["-s", "-vv"]
+addopts = ["-v"]
+filterwarnings = ["default"]
 tmp_path_retention_policy = "none"
-
-[tool.black]
-line-length = 120
-target-version = [
-    "py312", "py313", "py314"
-]
 
 [tool.ruff]
 line-length = 120
@@ -71,19 +64,16 @@ respect-gitignore = true
 target-version = "py312"
 
 [tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+    "ANN", "BLE001", "C", "COM812", "D", "EM101", "EM102", "FBT",
+    "G004", "PLR", "S101", "SIM102", "TRY002", "TRY003", "TRY400"
+]
 fixable = ["ALL"]
-select = [
-    "D", "E", "F", "I", "N", "FURB", "PT",
-    "RUF", "TID", "UP", "W"
-]
-extend-ignore = [
-    "D100", "D103", "D203", "D213"
-]
+
+[tool.ruff.lint.per-file-ignores]
+"**/test_*.py" = ["INP001"]
 
 [tool.ruff.format]
 docstring-code-format = true
 docstring-code-line-length = 120
-
-[tool.refurb]
-python_version = "3.12"
-enable_all = true

@@ -1,3 +1,7 @@
+# Copyright (c) 2025-2026 Corey Goldberg
+# SPDX-License-Identifier: MIT
+
+
 import logging
 import shutil
 from pathlib import Path
@@ -110,7 +114,7 @@ def test_analyze_unknown_file(caplog):
     audio_scan_info.analyze_file(filename)
     for record in caplog.records:
         assert record.levelname == "ERROR"
-    assert f"\u27a4  File: {filename}\n"
+    assert f"\u27a4  File: {filename}\n" in caplog.text
     assert "   \u2717 Error:\n     can't find file\n" in caplog.text
 
 
@@ -124,7 +128,7 @@ def test_run_filenames(tmp_path, caplog):
     for record in caplog.records:
         assert record.levelname == "INFO"
     for filepath in (tmp_path / filename for filename in filenames):
-        assert f"\u27a4  File: {filepath}\n"
+        assert f"\u27a4  File: {filepath}\n" in caplog.text
     assert "   \u2794 Info:\n" in caplog.text
     assert f"       length: {EXPECTED_LENGTH}\n" in caplog.text
     assert f"       bitrate: {EXPECTED_MP3_BITRATE}\n" in caplog.text
